@@ -51,8 +51,8 @@ fun MainScreen(viewModel: MainViewModel) {
                         when {
                             state.showWebView -> "🌍 Web Management"
                             state.showSsh -> "🔐 SSH Terminal"
-                            state.showTools -> "🛠 Toolbox"
-                            else -> "🌐 Ethernet Config"
+                            state.showTools -> stringResource(R.string.title_toolbox)
+                            else -> stringResource(R.string.title_main)
                         },
                         fontWeight = FontWeight.Bold
                     ) 
@@ -162,13 +162,13 @@ private fun StatusCard(state: MainViewModel.UiState, viewModel: MainViewModel) {
                 Spacer(Modifier.width(16.dp))
                 Column {
                     Text(
-                        text = if (isConnected) "Ethernet Active" else "No Ethernet Connection",
+                        text = if (isConnected) stringResource(R.string.status_active) else stringResource(R.string.status_inactive),
                         fontSize = 18.sp, 
                         fontWeight = FontWeight.Bold, 
                         color = Color.White
                     )
                     Text(
-                        text = if (isConnected) "Link Established" else "Check cable or interface",
+                        text = if (isConnected) stringResource(R.string.status_link_ok) else stringResource(R.string.status_link_fail),
                         fontSize = 12.sp,
                         color = Color.White.copy(alpha = 0.8f)
                     )
@@ -178,9 +178,9 @@ private fun StatusCard(state: MainViewModel.UiState, viewModel: MainViewModel) {
                 Spacer(Modifier.height(16.dp))
                 HorizontalDivider(color = Color.White.copy(alpha = 0.2f))
                 Spacer(Modifier.height(12.dp))
-                StatusRow("Interface", status.interfaceName ?: "—")
-                StatusRow("Local IP", status.ipAddress ?: "—")
-                StatusRow("Gateway", status.gateway ?: "—")
+                StatusRow(stringResource(R.string.label_interface), status.interfaceName ?: "—")
+                StatusRow(stringResource(R.string.label_local_ip), status.ipAddress ?: "—")
+                StatusRow(stringResource(R.string.hint_gateway), status.gateway ?: "—")
                 StatusRow("DNS", status.dns.firstOrNull() ?: "—")
             }
         }
@@ -198,7 +198,7 @@ private fun InterfaceSelectionCard(state: MainViewModel.UiState, viewModel: Main
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(Icons.AutoMirrored.Filled.List, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
                 Spacer(Modifier.width(8.dp))
-                Text("Select Interface", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                Text(stringResource(R.string.select_interface), fontWeight = FontWeight.Bold, fontSize = 16.sp)
             }
             Spacer(Modifier.height(12.dp))
             interfaces.forEach { iface ->
@@ -264,9 +264,9 @@ private fun ShizukuStatusCard(state: MainViewModel.UiState, viewModel: MainViewM
             )
             Spacer(Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
-                Text("Shizuku Engine", fontWeight = FontWeight.Bold, color = Color.DarkGray)
+                Text(stringResource(R.string.shizuku_engine), fontWeight = FontWeight.Bold, color = Color.DarkGray)
                 Text(
-                    text = if (!state.shizukuAvailable) "Not running" else if (!state.shizukuHasPermission) "Waiting for authorization" else "Authorized & Running",
+                    text = if (!state.shizukuAvailable) stringResource(R.string.shizuku_not_running) else if (!state.shizukuHasPermission) stringResource(R.string.shizuku_waiting) else stringResource(R.string.shizuku_running),
                     fontSize = 13.sp,
                     color = if (isReady) Color(0xFF2E7D32) else Color(0xFFE65100)
                 )
@@ -276,7 +276,7 @@ private fun ShizukuStatusCard(state: MainViewModel.UiState, viewModel: MainViewM
                     onClick = { viewModel.requestShizukuPermission() },
                     shape = RoundedCornerShape(8.dp)
                 ) {
-                    Text("Grant")
+                    Text(stringResource(R.string.btn_grant))
                 }
             }
         }
@@ -304,13 +304,13 @@ private fun IpConfigCard(state: MainViewModel.UiState, viewModel: MainViewModel)
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column(modifier = Modifier.padding(20.dp)) {
-            Text("⚙️ Static IP Configuration", fontWeight = FontWeight.ExtraBold, fontSize = 18.sp)
+            Text(stringResource(R.string.config_title), fontWeight = FontWeight.ExtraBold, fontSize = 18.sp)
             Spacer(Modifier.height(16.dp))
             
             OutlinedTextField(
                 value = ip, 
                 onValueChange = { ip = it }, 
-                label = { Text("IP Address") }, 
+                label = { Text(stringResource(R.string.hint_ip)) }, 
                 placeholder = { Text("e.g. 192.168.1.100") },
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp)
@@ -321,7 +321,7 @@ private fun IpConfigCard(state: MainViewModel.UiState, viewModel: MainViewModel)
                 OutlinedTextField(
                     value = prefix, 
                     onValueChange = { prefix = it }, 
-                    label = { Text("Prefix") }, 
+                    label = { Text(stringResource(R.string.hint_prefix)) }, 
                     modifier = Modifier.weight(1f),
                     shape = RoundedCornerShape(12.dp),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -330,7 +330,7 @@ private fun IpConfigCard(state: MainViewModel.UiState, viewModel: MainViewModel)
                 OutlinedTextField(
                     value = gateway, 
                     onValueChange = { gateway = it }, 
-                    label = { Text("Gateway") }, 
+                    label = { Text(stringResource(R.string.hint_gateway)) }, 
                     modifier = Modifier.weight(2f),
                     shape = RoundedCornerShape(12.dp)
                 )
@@ -340,7 +340,7 @@ private fun IpConfigCard(state: MainViewModel.UiState, viewModel: MainViewModel)
             OutlinedTextField(
                 value = dns, 
                 onValueChange = { dns = it }, 
-                label = { Text("Primary DNS") }, 
+                label = { Text(stringResource(R.string.hint_dns)) }, 
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp)
             )
@@ -358,7 +358,7 @@ private fun IpConfigCard(state: MainViewModel.UiState, viewModel: MainViewModel)
                     if (state.configuring) {
                         CircularProgressIndicator(modifier = Modifier.size(24.dp), color = Color.White, strokeWidth = 3.dp)
                     } else {
-                        Text("Apply Config", fontWeight = FontWeight.Bold)
+                        Text(stringResource(R.string.btn_apply), fontWeight = FontWeight.Bold)
                     }
                 }
                 OutlinedButton(
@@ -367,7 +367,7 @@ private fun IpConfigCard(state: MainViewModel.UiState, viewModel: MainViewModel)
                     shape = RoundedCornerShape(12.dp),
                     contentPadding = PaddingValues(12.dp)
                 ) {
-                    Text("Restore DHCP", fontWeight = FontWeight.Bold)
+                    Text(stringResource(R.string.btn_dhcp), fontWeight = FontWeight.Bold)
                 }
             }
             state.configResult?.let {
@@ -391,7 +391,7 @@ private fun IpConfigCard(state: MainViewModel.UiState, viewModel: MainViewModel)
 @Composable
 private fun PresetsSection(state: MainViewModel.UiState, viewModel: MainViewModel) {
     Column {
-        Text("📋 Quick Presets", fontWeight = FontWeight.Bold, fontSize = 16.sp, modifier = Modifier.padding(start = 4.dp))
+        Text(stringResource(R.string.presets_title), fontWeight = FontWeight.Bold, fontSize = 16.sp, modifier = Modifier.padding(start = 4.dp))
         Spacer(Modifier.height(8.dp))
         LazyRow(
             contentPadding = PaddingValues(horizontal = 4.dp),
