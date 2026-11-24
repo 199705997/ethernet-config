@@ -24,4 +24,18 @@
     <string name="btn_apply">Apply Config</string>
     <string name="btn_dhcp">Restore DHCP</string>
     <string name="presets_title">📋 Quick Presets</string>
+    <string name="ping_title">📡 Continuous Diagnosis (Ping)</string>
+    <string name="ping_host">Target IP / Host</string>
+    <string name="ping_start">Start</string>
+    <string name="ping_stop">Stop</string>
+    <string name="ping_gateway">Ping Gateway</string>
+    <string name="ping_ready">Terminal Ready...</string>
+    <string name="port_title">🔍 Port Scanner</string>
+    <string name="port_host">Target IP Address</string>
+    <string name="port_scanning">Scanning...</string>
+    <string name="port_found">Open Ports Found:</string>
+    <string name="ip_title">🌐 IP Scanner</string>
+    <string name="ip_subnet">Subnet (x.x.x.0/24)</string>
+    <string name="ip_scan">Scan</string>
+
 </resources>
