@@ -31,6 +31,8 @@ import androidx.compose.ui.viewinterop.AndroidView
 import com.ethconfig.app.net.EthernetHelper
 import com.ethconfig.app.net.SshHelper
 import com.ethconfig.app.ui.MainViewModel
+import androidx.compose.ui.res.stringResource
+import com.ethconfig.app.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
