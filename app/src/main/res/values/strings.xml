@@ -37,5 +37,6 @@
     <string name="ip_title">🌐 IP Scanner</string>
     <string name="ip_subnet">Subnet (x.x.x.0/24)</string>
     <string name="ip_scan">Scan</string>
+    <color name="ic_launcher_background">#1E40AF</color>
 
 </resources>
