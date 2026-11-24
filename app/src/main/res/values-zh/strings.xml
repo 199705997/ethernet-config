@@ -24,5 +24,19 @@
     <string name="btn_apply">应用配置</string>
     <string name="btn_dhcp">恢复 DHCP</string>
     <string name="presets_title">📋 快捷预设方案</string>
+    <string name="ping_title">📡 持续延迟诊断 (Ping)</string>
+    <string name="ping_host">目标 IP / 域名</string>
+    <string name="ping_start">开始</string>
+    <string name="ping_stop">停止</string>
+    <string name="ping_gateway">Ping 网关</string>
+    <string name="ping_ready">终端已就绪...</string>
+    <string name="port_title">🔍 端口扫描器</string>
+    <string name="port_host">目标 IP 地址</string>
+    <string name="port_scanning">扫描中...</string>
+    <string name="port_found">发现开放端口：</string>
+    <string name="ip_title">🌐 网段设备扫描</string>
+    <string name="ip_subnet">子网段 (x.x.x.0/24)</string>
+    <string name="ip_scan">扫描</string>
+
 </resources>
 
