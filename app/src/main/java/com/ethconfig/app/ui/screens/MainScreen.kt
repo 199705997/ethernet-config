@@ -428,14 +428,14 @@ private fun ContinuousPingCard(state: MainViewModel.UiState, viewModel: MainView
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text("📡 Continuous Diagnosis (Ping)", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text(stringResource(R.string.ping_title), fontWeight = FontWeight.Bold, fontSize = 16.sp)
             Spacer(Modifier.height(12.dp))
             
             Row(verticalAlignment = Alignment.CenterVertically) {
                 OutlinedTextField(
                     value = host, 
                     onValueChange = { host = it }, 
-                    label = { Text("Target IP / Host") }, 
+                    label = { Text(stringResource(R.string.ping_host)) }, 
                     placeholder = { Text("e.g. 8.8.8.8") },
                     modifier = Modifier.weight(1f),
                     shape = RoundedCornerShape(12.dp),
@@ -454,7 +454,7 @@ private fun ContinuousPingCard(state: MainViewModel.UiState, viewModel: MainView
                         containerColor = if (state.isContinuousPinging) Color(0xFFC62828) else MaterialTheme.colorScheme.primary
                     )
                 ) {
-                    Text(if (state.isContinuousPinging) "Stop" else "Start")
+                    Text(if (state.isContinuousPinging) stringResource(R.string.ping_stop) else stringResource(R.string.ping_start))
                 }
             }
             
@@ -462,7 +462,7 @@ private fun ContinuousPingCard(state: MainViewModel.UiState, viewModel: MainView
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 AssistChip(
                     onClick = { host = currentGateway; viewModel.startContinuousPing(currentGateway) }, 
-                    label = { Text("Ping Gateway") },
+                    label = { Text(stringResource(R.string.ping_gateway)) },
                     enabled = currentGateway != "Not available" && !state.isContinuousPinging
                 )
                 AssistChip(
@@ -482,7 +482,7 @@ private fun ContinuousPingCard(state: MainViewModel.UiState, viewModel: MainView
             ) {
                 if (state.pingLogs.isEmpty()) {
                     Box(contentAlignment = Alignment.Center) {
-                        Text("Terminal Ready...", color = Color.Gray, fontSize = 12.sp, fontFamily = FontFamily.Monospace)
+                        Text(stringResource(R.string.ping_ready), color = Color.Gray, fontSize = 12.sp, fontFamily = FontFamily.Monospace)
                     }
                 } else {
                     LazyColumn(
@@ -523,7 +523,7 @@ private fun PortScanCard(state: MainViewModel.UiState, viewModel: MainViewModel)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("🔍 Port Scanner", fontWeight = FontWeight.Bold, fontSize = 16.sp, modifier = Modifier.weight(1f))
+                Text(stringResource(R.string.port_title), fontWeight = FontWeight.Bold, fontSize = 16.sp, modifier = Modifier.weight(1f))
                 TextButton(onClick = { showPorts = !showPorts }, contentPadding = PaddingValues(horizontal = 8.dp)) {
                     Text(if (showPorts) "Hide Ports" else "Ports (${state.scanPorts.size})", fontSize = 12.sp)
                 }
@@ -568,7 +568,7 @@ private fun PortScanCard(state: MainViewModel.UiState, viewModel: MainViewModel)
             OutlinedTextField(
                 value = host, 
                 onValueChange = { host = it }, 
-                label = { Text("Target IP Address") }, 
+                label = { Text(stringResource(R.string.port_host)) }, 
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp),
                 singleLine = true
@@ -585,7 +585,7 @@ private fun PortScanCard(state: MainViewModel.UiState, viewModel: MainViewModel)
                 if (state.scanning) {
                     CircularProgressIndicator(modifier = Modifier.size(20.dp), color = Color.White, strokeWidth = 2.dp)
                     Spacer(Modifier.width(8.dp))
-                    Text("Scanning...")
+                    Text(stringResource(R.string.port_scanning))
                 } else {
                     Text("Scan ${state.scanPorts.size} Ports")
                 }
@@ -593,7 +593,7 @@ private fun PortScanCard(state: MainViewModel.UiState, viewModel: MainViewModel)
             
             if (state.openServices.isNotEmpty()) {
                 Spacer(Modifier.height(12.dp))
-                Text("Open Ports Found:", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                Text(stringResource(R.string.port_found), fontWeight = FontWeight.Bold, fontSize = 14.sp)
                 FlowRow(
                     modifier = Modifier.padding(top = 8.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -663,13 +663,13 @@ private fun IpScannerCard(state: MainViewModel.UiState, viewModel: MainViewModel
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text("🌐 IP Scanner", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text(stringResource(R.string.ip_title), fontWeight = FontWeight.Bold, fontSize = 16.sp)
             Spacer(Modifier.height(12.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 OutlinedTextField(
                     value = subnet,
                     onValueChange = { subnet = it },
-                    label = { Text("Subnet (x.x.x.0/24)") },
+                    label = { Text(stringResource(R.string.ip_subnet)) },
                     modifier = Modifier.weight(1f),
                     shape = RoundedCornerShape(12.dp),
                     singleLine = true,
@@ -685,7 +685,7 @@ private fun IpScannerCard(state: MainViewModel.UiState, viewModel: MainViewModel
                         CircularProgressIndicator(Modifier.size(18.dp), color = Color.White, strokeWidth = 2.dp)
                     } else {
                         Text(when (scanMode) {
-                            EthernetHelper.ScanMode.QUICK -> "Scan"
+                            EthernetHelper.ScanMode.QUICK -> stringResource(R.string.ip_scan)
                             EthernetHelper.ScanMode.CUSTOM -> "🎯 Scan"
                         })
                     }
