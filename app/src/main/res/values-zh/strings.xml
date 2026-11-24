@@ -1,1 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">以太网配置</string>
+    <string name="title_main">🌐 以太网配置</string>
+    <string name="title_toolbox">🛠 网络工具箱</string>
+    <string name="status_active">以太网已连接</string>
+    <string name="status_inactive">未检测到以太网</string>
+    <string name="status_link_ok">物理链路已建立</string>
+    <string name="status_link_fail">请检查网线或网络接口</string>
+    <string name="label_interface">网络接口</string>
+    <string name="label_local_ip">本机 IP</string>
+    <string name="label_gateway">默认网关</string>
+    <string name="select_interface">选择网络接口</string>
+    <string name="shizuku_engine">Shizuku 引擎</string>
+    <string name="shizuku_not_running">未运行</string>
+    <string name="shizuku_waiting">等待授权</string>
+    <string name="shizuku_running">已授权并运行中</string>
+    <string name="btn_grant">授权</string>
+    <string name="config_title">⚙️ 静态 IP 配置</string>
+    <string name="hint_ip">IP 地址</string>
+    <string name="hint_prefix">掩码长度</string>
+    <string name="hint_gateway">默认网关</string>
+    <string name="hint_dns">首选 DNS</string>
+    <string name="btn_apply">应用配置</string>
+    <string name="btn_dhcp">恢复 DHCP</string>
+    <string name="presets_title">📋 快捷预设方案</string>
+</resources>
 
