@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">以太网配置</string>
+    <string name="app_name">Ethernet Config</string>
+    <string name="title_main">🌐 Ethernet Config</string>
+    <string name="title_toolbox">🛠 Toolbox</string>
+    <string name="status_active">Ethernet Active</string>
+    <string name="status_inactive">No Ethernet Connection</string>
+    <string name="status_link_ok">Link Established</string>
+    <string name="status_link_fail">Check cable or interface</string>
+    <string name="label_interface">Interface</string>
+    <string name="label_local_ip">Local IP</string>
+    <string name="label_gateway">Gateway</string>
+    <string name="select_interface">Select Interface</string>
+    <string name="shizuku_engine">Shizuku Engine</string>
+    <string name="shizuku_not_running">Not running</string>
+    <string name="shizuku_waiting">Waiting for authorization</string>
+    <string name="shizuku_running">Authorized &amp; Running</string>
+    <string name="btn_grant">Grant</string>
+    <string name="config_title">⚙️ Static IP Configuration</string>
+    <string name="hint_ip">IP Address</string>
+    <string name="hint_prefix">Prefix</string>
+    <string name="hint_gateway">Gateway</string>
+    <string name="hint_dns">Primary DNS</string>
+    <string name="btn_apply">Apply Config</string>
+    <string name="btn_dhcp">Restore DHCP</string>
+    <string name="presets_title">📋 Quick Presets</string>
 </resources>
